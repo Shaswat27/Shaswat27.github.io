@@ -190,7 +190,7 @@ h5, h6          { font-weight: bolder }
         display: block;
         width: 30px;
         height: 30px;
-        background: url('../img/sm_1.png') no-repeat;
+        background: url('../img/sm_hover_1.png') no-repeat;
         background-position: 0 0;
     }
 
