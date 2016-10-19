@@ -132,11 +132,11 @@
 
     <ul class="btn clearfix">
         
-        <li><a class="previous disabled"></a></li>
+        <li><a href="/2016/10/20/Lane-Detection/" class="previous" data-title="Lane Detection"></a></li>
         
         <li><a href="/" class="grid" data-title="Portfolio"></a></li>
         
-        <li><a href="/2016/10/19/Lane-Detection/" class="next" data-title="Lane Detection"></a></li>
+        <li><a class="next disabled"></a></li>
         
     </ul>
 
@@ -174,6 +174,11 @@
 </ol>
 <p>More details of the same and the explanation of the <a href="http://www.robots.ox.ac.uk/~tvg/publications/talks/fast-rcnn-slides.pdf" target="_blank" rel="external">non-differentiability</a> of the ROI Pool layer is explained in the ICCV’15 tutorial titled ‘Training R-CNNs of various velocities’ by Ross Girshick. </p>
 <h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p>A few of the test results:<br><img src="/images/obs-det3.png" alt="result1"><br><img src="/images/obs-det2.png" alt="result2"></p>
+<p>Seeing good results on such staadard images, I thought the network should be tested for its mettle with images taken at crowded streets in India. Very surprisingly, it works well! </p>
+<p><strong>Scene from Khan Market, New Delhi:</strong><br><img src="/images/obs-det5.jpg" alt="result3"><br><img src="/images/obs-det7.jpg" alt="result4"></p>
+<p><strong>A crowded street in New Delhi:</strong><br><img src="/images/obs-det4.jpg" alt="result5"><br><img src="/images/obs-det6.jpg" alt="result6"></p>
+<p><strong>A <em>(very)</em> busy street in Kolkata:</strong><br><img src="/images/obs-det5.jpg" alt="result7"><br><img src="/images/obs-det3.jpg" alt="result8"></p>
+<p>The network did make <em>(hilarious)</em> mistakes though, for example - this autorickshaw (tuk-tuk) misclassified as a bottle:<br><img src="/images/obs-det2.jpg" alt="result9"></p>
 <h3 id="Further-Work"><a href="#Further-Work" class="headerlink" title="Further Work"></a>Further Work</h3><p>So far, we have trained the network for the imagenet classes and vehicles like cars, buses, and airplanes only. The dataset for traffic lights, traffic signs, and pedestrians will be added soon.</p>
 <h3 id="Tackling-Images-of-Various-Sizes"><a href="#Tackling-Images-of-Various-Sizes" class="headerlink" title="Tackling Images of Various Sizes"></a>Tackling Images of Various Sizes</h3><p>An important problem also solved by this network is the problem of handling images of various sizes. In real life, we rarely come across a dataset with equal image sizes. To tackle these problem the <strong>ROI Pool layer</strong> (ROIs can be different sizes) takes as input the various ROIs with variable sizes and produces a fixed size output defined by the ‘pool_w’ and ‘pool_h’ (for width and height of the output respectively, the number of channels remains the same) parameters in the layer:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"roi_pool1"</span></div><div class="line">  <span class="built_in">type</span>: <span class="string">"ROIPooling"</span></div><div class="line">  bottom: <span class="string">"pool1"</span></div><div class="line">  bottom: <span class="string">"rois"</span></div><div class="line">  top: <span class="string">"pool2"</span></div><div class="line">  roi_pooling_param &#123;</div><div class="line">    pooled_w: 10</div><div class="line">    pooled_h: 10</div><div class="line">    spatial_scale: 0.0625 <span class="comment"># 1/16</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>The technique used by this layer is Spatial Pyramid Pooling (SPP) as described in the <a href="https://arxiv.org/pdf/1406.4729v4.pdf" target="_blank" rel="external">paper</a> by Kaiming He, Xiangyu Zhang, Shaoqing Ren and Jian Sun. </p>
