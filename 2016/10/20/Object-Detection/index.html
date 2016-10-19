@@ -72,44 +72,40 @@
 <!-- Navigation -->
 <header>
     <div class="logo">
-        <a href="/">Shaswat Datta</a>
+        <a href="<%- config.root %>"><%- config.title || "" %></a>
     </div><!-- end logo -->
 
     <div id="menu_icon"></div>
     <nav>
         <ul>
-            
+            <% for (var i in theme.menu){ %>
             <li>
-                <a href="/">Home</a>
+                <a href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
             </li>
-            
-            <li>
-                <a href="/archives">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about">About</a>
-            </li>
-            
+            <% } %>
         </ul>
     </nav><!-- end navigation menu -->
 
     <div class="footer clearfix">
         <ul class="social clearfix">
-            
-            
-                <li><a href="https://www.facebook.com/shaswat27" class="fb" target="_blank" data-title="Facebook"></a></li>
-            
-            
-            
-                <li><a href="https://in.linkedin.com/in/shaswat-datta-86812075" class="google" target="_blank" data-title="LinkedIn"></a></li>
-            
-            
-                <li><a href="mailto:shaswat.datta@gmail.com" class="dribble" target="_blank" data-title="Email"></a></li>
-            
-            
-                <li><a href="https://www.github.com/shaswat27" class="rss" target="_blank" data-title="Github"></a></li>
-            
+            <% if (theme.twitter_url) { %>
+                <li><a href="<%- theme.twitter_url %>" class="twitter" target="_blank" data-title="Twitter"></a></li>
+            <% } %>
+            <% if (theme.facebook_url) { %>
+                <li><a href="<%- theme.facebook_url %>" class="fb" target="_blank" data-title="Facebook"></a></li>
+            <% } %>
+            <% if (theme.behance_url) { %>
+                <li><a href="<%- theme.behance_url %>" class="behance" target="_blank" data-title="Behance"></a></li>
+            <% } %>
+            <% if (theme.googleplus_url) { %>
+                <li><a href="<%- theme.googleplus_url %>" class="google" target="_blank" data-title="LinkedIn"></a></li>
+            <% } %>
+            <% if (theme.dribble_url) { %>
+                <li><a href="<%- theme.dribble_url %>" class="dribble" target="_blank" data-title="Dribble"></a></li>
+            <% } %>
+            <% if (theme.rss_url) { %>
+                <li><a href="<%- theme.rss_url %>" class="rss" target="_blank" data-title="Github"></a></li>
+            <% } %>
         </ul><!-- end social -->
 
         <div class="rights">
@@ -132,11 +128,11 @@
 
     <ul class="btn clearfix">
         
-        <li><a href="/2016/10/20/Lane-Detection/" class="previous" data-title="Lane Detection"></a></li>
+        <li><a class="previous disabled"></a></li>
         
         <li><a href="/" class="grid" data-title="Portfolio"></a></li>
         
-        <li><a class="next disabled"></a></li>
+        <li><a href="/2016/10/20/Lane-Detection/" class="next" data-title="Lane Detection"></a></li>
         
     </ul>
 
@@ -177,7 +173,7 @@
 <p>Seeing good results on such staadard images, I thought the network should be tested for its mettle with images taken at crowded streets in India. Very surprisingly, it works well! </p>
 <p><strong>Scene from Khan Market, New Delhi:</strong><br><img src="/images/obs-det5.jpg" alt="result3"><br><img src="/images/obs-det7.jpg" alt="result4"></p>
 <p><strong>A crowded street in New Delhi:</strong><br><img src="/images/obs-det4.jpg" alt="result5"><br><img src="/images/obs-det6.jpg" alt="result6"></p>
-<p><strong>A <em>(very)</em> busy street in Kolkata:</strong><br><img src="/images/obs-det5.jpg" alt="result7"><br><img src="/images/obs-det3.jpg" alt="result8"></p>
+<p><strong>A <em>(very)</em> busy street in Kolkata:</strong><br><img src="/images/obs-det3.jpg" alt="result8"></p>
 <p>The network did make <em>(hilarious)</em> mistakes though, for example - this autorickshaw (tuk-tuk) misclassified as a bottle:<br><img src="/images/obs-det2.jpg" alt="result9"></p>
 <h3 id="Further-Work"><a href="#Further-Work" class="headerlink" title="Further Work"></a>Further Work</h3><p>So far, we have trained the network for the imagenet classes and vehicles like cars, buses, and airplanes only. The dataset for traffic lights, traffic signs, and pedestrians will be added soon.</p>
 <h3 id="Tackling-Images-of-Various-Sizes"><a href="#Tackling-Images-of-Various-Sizes" class="headerlink" title="Tackling Images of Various Sizes"></a>Tackling Images of Various Sizes</h3><p>An important problem also solved by this network is the problem of handling images of various sizes. In real life, we rarely come across a dataset with equal image sizes. To tackle these problem the <strong>ROI Pool layer</strong> (ROIs can be different sizes) takes as input the various ROIs with variable sizes and produces a fixed size output defined by the ‘pool_w’ and ‘pool_h’ (for width and height of the output respectively, the number of channels remains the same) parameters in the layer:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"roi_pool1"</span></div><div class="line">  <span class="built_in">type</span>: <span class="string">"ROIPooling"</span></div><div class="line">  bottom: <span class="string">"pool1"</span></div><div class="line">  bottom: <span class="string">"rois"</span></div><div class="line">  top: <span class="string">"pool2"</span></div><div class="line">  roi_pooling_param &#123;</div><div class="line">    pooled_w: 10</div><div class="line">    pooled_h: 10</div><div class="line">    spatial_scale: 0.0625 <span class="comment"># 1/16</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
