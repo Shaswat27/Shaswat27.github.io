@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Personal blog and porfolio page">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Shaswat Datta">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Localization and Mapping"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Shaswat Datta"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Localization and Mapping - Shaswat Datta</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-83741901-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+<!-- Menu -->
+<!-- Navigation -->
+<header>
+    <div class="logo">
+        <a href="/">Shaswat Datta</a>
+    </div><!-- end logo -->
+
+    <div id="menu_icon"></div>
+    <nav>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about">About</a>
+            </li>
+            
+        </ul>
+    </nav><!-- end navigation menu -->
+
+    <div class="footer clearfix">
+        <ul class="social clearfix">
+            
+            
+                <li><a href="https://www.facebook.com/shaswat27" class="fb" target="_blank" data-title="Facebook"></a></li>
+            
+            
+            
+                <li><a href="https://in.linkedin.com/in/shaswat-datta-86812075" class="google" target="_blank" data-title="LinkedIn"></a></li>
+            
+            
+                <li><a href="mailto:shaswat.datta@gmail.com" class="dribble" target="_blank" data-title="Email"></a></li>
+            
+            
+                <li><a href="https://www.github.com/shaswat27" class="rss" target="_blank" data-title="Github"></a></li>
+            
+        </ul><!-- end social -->
+
+        <div class="rights">
+            <p></p>
+            <p></p>
+            <p>Copyright © Shaswat Datta.</p>
+        </div><!-- end rights -->
+    </div ><!-- end footer -->
+</header><!-- end header -->
+
+
+<!-- Main Content -->
+<section class="main clearfix">
+
+    <section class="top" style="background: url('/images/Map1.jpg');">
+        <div class="wrapper content_header clearfix">
+            
+
+<div class="work_nav">
+
+    <ul class="btn clearfix">
+        
+        <li><a href="/2016/10/21/Near-Duplicate-Detection/" class="previous" data-title="Near-Duplicate Detection"></a></li>
+        
+        <li><a href="/" class="grid" data-title="Portfolio"></a></li>
+        
+        <li><a href="/2016/10/21/Lane-Detection/" class="next" data-title="Lane Navigation"></a></li>
+        
+    </ul>
+
+</div><!-- end work_nav -->
+            <h1 class="title">Localization and Mapping</h1>
+        </div>
+    </section><!-- end top -->
+
+    <section class="wrapper">
+        <div class="content">
+
+            <!-- Gallery -->
+            
+
+            <!-- Content -->
+            <p>One of the first tasks I did as a part of the <a href="agv-iit-kgp.github.io">Autonomous Ground Vehicle</a> research group was to implement localization and mapping, way back at the end of my first year. I, along with Satyesh and Vasudha (two fellow batchmates), worked right from interfacing the sensors to implementing and testing the algorithms. We did all of this for 2D data and are currently working towards making both localization and mapping work for 3D data. </p>
+<h2 id="Localization"><a href="#Localization" class="headerlink" title="Localization"></a><strong>Localization</strong></h2><p>One of the most important requirements for automating a robot is its localization. By localization, we mean that the robot must, at all times, have a fairly accurate idea about its position in a given map or environment. If a robot does not know where it is, it can not decide  what to do next. In order to localize itself, a robot has to have access to relative and absolute measurements that contain information related to its position. The robot gets this information from its sensors. The sensors give it feedback about its movement and the environment around the robot. Given this information, the robot has to determine its location as accurately as possible. What makes this difficult is the existence of uncertainty in both the movement and the sensing of the robot. The uncertain information needs to be combined in an optimal way. We did so using the Extended Kalman filter algorithm, which is a kind of Bayesian filter.</p>
+<p><img src="/images/Map2.jpg" alt="Kalman Filter"></p>
+<p>To localize, we used three inputs - odometry data (from <a href="https://en.wikipedia.org/wiki/Rotary_encoder" target="_blank" rel="external">wheel encoders</a>), IMU data and GPS data (from <a href="http://www.vectornav.com/products/vn200-rugged" target="_blank" rel="external">Vectornav INS</a>. Since the data received from each of these sensors is inherently noisy, we used the Extended Kalman Filter algorithm. The Extended Kalman Filter is the non-linear version of Kalman Filter which is used widely to produce estimates of unknown variables (linear Gaussian systems) using a Bayes Filter algorithm that uses a series of measurements observed over time (containing noise and other inaccuracies). These measurements tend to be more precise than those based on a single measurement alone. The EKF employs a local linearization using Taylor’s theorem, to employ the Kalman filter algorithm (which uses a linear model) to nonlinear problems. </p>
+<p><img src="/images/Map3.jpg" alt="Filter Results"></p>
+<p>There were problems while integrating GPS data into the filter, especially when the satellite data was inaccurate at some places. In this iteration, the covariance matrices were tuned and an average of 100 iterations of GPS data was used to set the origin in the GPS frame.<br>With this, errors as low as 0.2m (in x and y directions) were achieved after following a closed loop path of perimeter 400m. </p>
+<h2 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a><strong>Mapping</strong></h2><p>We then fed the filtered odometry data into the GMapping algorithm along with the input from the LIDAR (Laser Scan). GMapping is a highly efficient Rao-Blackwellized particle filter to learn grid maps from laser range data and form a map showing  the obstacles around the robot. It uses the filtered odometry data to get the pose of the robot and merges the data with the laser scans received from the LIDAR to produce a map of the robot’s environment. The map of the environment, thus produced is used by our navigation and path planning module. </p>
+<p>The map outputs visualized in RViz:</p>
+<p>Outdoor Map<br><img src="/images/Map4.jpg" alt="map1"></p>
+<p>Indoor Map<br><img src="/images/Map5.jpg" alt="map2"></p>
+
+
+            <!-- Tags -->
+            
+
+
+<div class="tags">
+    
+</div>
+
+
+
+            <!-- Comments -->
+            <div>
+                
+
+
+            </div>
+        </div><!-- end content -->
+    </section>
+</section><!-- end main -->
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/js/jquery.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
