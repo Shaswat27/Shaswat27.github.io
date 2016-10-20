@@ -70,40 +70,44 @@
 <!-- Navigation -->
 <header>
     <div class="logo">
-        <a href="<%- config.root %>"><%- config.title || "" %></a>
+        <a href="/">Shaswat Datta</a>
     </div><!-- end logo -->
 
     <div id="menu_icon"></div>
     <nav>
         <ul>
-            <% for (var i in theme.menu){ %>
+            
             <li>
-                <a href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+                <a href="/">Home</a>
             </li>
-            <% } %>
+            
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about">About</a>
+            </li>
+            
         </ul>
     </nav><!-- end navigation menu -->
 
     <div class="footer clearfix">
         <ul class="social clearfix">
-            <% if (theme.twitter_url) { %>
-                <li><a href="<%- theme.twitter_url %>" class="twitter" target="_blank" data-title="Twitter"></a></li>
-            <% } %>
-            <% if (theme.facebook_url) { %>
-                <li><a href="<%- theme.facebook_url %>" class="fb" target="_blank" data-title="Facebook"></a></li>
-            <% } %>
-            <% if (theme.behance_url) { %>
-                <li><a href="<%- theme.behance_url %>" class="behance" target="_blank" data-title="Behance"></a></li>
-            <% } %>
-            <% if (theme.googleplus_url) { %>
-                <li><a href="<%- theme.googleplus_url %>" class="google" target="_blank" data-title="LinkedIn"></a></li>
-            <% } %>
-            <% if (theme.dribble_url) { %>
-                <li><a href="<%- theme.dribble_url %>" class="dribble" target="_blank" data-title="Dribble"></a></li>
-            <% } %>
-            <% if (theme.rss_url) { %>
-                <li><a href="<%- theme.rss_url %>" class="rss" target="_blank" data-title="Github"></a></li>
-            <% } %>
+            
+            
+                <li><a href="https://www.facebook.com/shaswat27" class="fb" target="_blank" data-title="Facebook"></a></li>
+            
+            
+            
+                <li><a href="https://in.linkedin.com/in/shaswat-datta-86812075" class="google" target="_blank" data-title="LinkedIn"></a></li>
+            
+            
+                <li><a href="mailto:shaswat.datta@gmail.com" class="dribble" target="_blank" data-title="Email"></a></li>
+            
+            
+                <li><a href="https://www.github.com/shaswat27" class="rss" target="_blank" data-title="Github"></a></li>
+            
         </ul><!-- end social -->
 
         <div class="rights">
@@ -117,6 +121,17 @@
 
 <!-- Main Content -->
 <section class="main clearfix">
+    
+        <div class="work">
+    <a href="/2016/10/21/Visual-Odometry/">
+        <img src="/images/VO.jpg" class="media" alt=""/>
+        <div class="caption">
+            <div class="work_title">
+                <h1>Visual Odometry</h1>
+            </div>
+        </div>
+    </a>
+</div>
     
         <div class="work">
     <a href="/2016/10/20/Object-Detection/">
@@ -135,17 +150,6 @@
         <div class="caption">
             <div class="work_title">
                 <h1>Lane Navigation</h1>
-            </div>
-        </div>
-    </a>
-</div>
-    
-        <div class="work">
-    <a href="/2016/10/20/Visual-Odometry/">
-        <img src="/images/VO.jpg" class="media" alt=""/>
-        <div class="caption">
-            <div class="work_title">
-                <h1>Visual Odometry</h1>
             </div>
         </div>
     </a>
