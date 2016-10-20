@@ -72,44 +72,40 @@
 <!-- Navigation -->
 <header>
     <div class="logo">
-        <a href="/">Shaswat Datta</a>
+        <a href="<%- config.root %>"><%- config.title || "" %></a>
     </div><!-- end logo -->
 
     <div id="menu_icon"></div>
     <nav>
         <ul>
-            
+            <% for (var i in theme.menu){ %>
             <li>
-                <a href="/">Home</a>
+                <a href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
             </li>
-            
-            <li>
-                <a href="/archives">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about">About</a>
-            </li>
-            
+            <% } %>
         </ul>
     </nav><!-- end navigation menu -->
 
     <div class="footer clearfix">
         <ul class="social clearfix">
-            
-            
-                <li><a href="https://www.facebook.com/shaswat27" class="fb" target="_blank" data-title="Facebook"></a></li>
-            
-            
-            
-                <li><a href="https://in.linkedin.com/in/shaswat-datta-86812075" class="google" target="_blank" data-title="LinkedIn"></a></li>
-            
-            
-                <li><a href="mailto:shaswat.datta@gmail.com" class="dribble" target="_blank" data-title="Email"></a></li>
-            
-            
-                <li><a href="https://www.github.com/shaswat27" class="rss" target="_blank" data-title="Github"></a></li>
-            
+            <% if (theme.twitter_url) { %>
+                <li><a href="<%- theme.twitter_url %>" class="twitter" target="_blank" data-title="Twitter"></a></li>
+            <% } %>
+            <% if (theme.facebook_url) { %>
+                <li><a href="<%- theme.facebook_url %>" class="fb" target="_blank" data-title="Facebook"></a></li>
+            <% } %>
+            <% if (theme.behance_url) { %>
+                <li><a href="<%- theme.behance_url %>" class="behance" target="_blank" data-title="Behance"></a></li>
+            <% } %>
+            <% if (theme.googleplus_url) { %>
+                <li><a href="<%- theme.googleplus_url %>" class="google" target="_blank" data-title="LinkedIn"></a></li>
+            <% } %>
+            <% if (theme.dribble_url) { %>
+                <li><a href="<%- theme.dribble_url %>" class="dribble" target="_blank" data-title="Dribble"></a></li>
+            <% } %>
+            <% if (theme.rss_url) { %>
+                <li><a href="<%- theme.rss_url %>" class="rss" target="_blank" data-title="Github"></a></li>
+            <% } %>
         </ul><!-- end social -->
 
         <div class="rights">
@@ -132,11 +128,11 @@
 
     <ul class="btn clearfix">
         
-        <li><a href="/2016/10/20/Music-Harmonization/" class="previous" data-title="Music Harmonization"></a></li>
+        <li><a href="/2016/10/20/Laser-Rangefinder/" class="previous" data-title="Laser Rangefinder"></a></li>
         
         <li><a href="/" class="grid" data-title="Portfolio"></a></li>
         
-        <li><a href="/2016/10/20/Laser-Rangefinder/" class="next" data-title="Laser Rangefinder"></a></li>
+        <li><a href="/2016/10/20/Object-Detection/" class="next" data-title="Object Detection"></a></li>
         
     </ul>
 
@@ -152,7 +148,17 @@
             
 
             <!-- Content -->
-            
+            <p>One of the first tasks I did as a part of the <a href="agv-iit-kgp.github.io">Autonomous Ground Vehicle</a> research group was to implement localization and mapping, way back at the end of my first year. I, along with Satyesh and Vasudha (two fellow batchmates), worked right from interfacing the sensors to implementing and testing the algorithms. We did all of this for 2D data and are currently working towards making both localization and mapping work for 3D data. </p>
+<h2 id="Localization"><a href="#Localization" class="headerlink" title="Localization"></a><strong>Localization</strong></h2><p>One of the most important requirements for automating a robot is its localization. By localization, we mean that the robot must, at all times, have a fairly accurate idea about its position in a given map or environment. If a robot does not know where it is, it can not decide  what to do next. In order to localize itself, a robot has to have access to relative and absolute measurements that contain information related to its position. The robot gets this information from its sensors. The sensors give it feedback about its movement and the environment around the robot. Given this information, the robot has to determine its location as accurately as possible. What makes this difficult is the existence of uncertainty in both the movement and the sensing of the robot. The uncertain information needs to be combined in an optimal way. We did so using the Extended Kalman filter algorithm, which is a kind of Bayesian filter.</p>
+<p><img src="/images/Map2.jpg" alt="Kalman Filter"></p>
+<p>To localize, we used three inputs - odometry data (from <a href="https://en.wikipedia.org/wiki/Rotary_encoder" target="_blank" rel="external">wheel encoders</a>), IMU data and GPS data (from <a href="http://www.vectornav.com/products/vn200-rugged" target="_blank" rel="external">Vectornav INS</a>. Since the data received from each of these sensors is inherently noisy, we used the Extended Kalman Filter algorithm. The Extended Kalman Filter is the non-linear version of Kalman Filter which is used widely to produce estimates of unknown variables (linear Gaussian systems) using a Bayes Filter algorithm that uses a series of measurements observed over time (containing noise and other inaccuracies). These measurements tend to be more precise than those based on a single measurement alone. The EKF employs a local linearization using Taylor’s theorem, to employ the Kalman filter algorithm (which uses a linear model) to nonlinear problems. </p>
+<p><img src="/images/Map3.jpg" alt="Filter Results"></p>
+<p>There were problems while integrating GPS data into the filter, especially when the satellite data was inaccurate at some places. In this iteration, the covariance matrices were tuned and an average of 100 iterations of GPS data was used to set the origin in the GPS frame.<br>With this, errors as low as 0.2m (in x and y directions) were achieved after following a closed loop path of perimeter 400m. </p>
+<h2 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a><strong>Mapping</strong></h2><p>We then fed the filtered odometry data into the GMapping algorithm along with the input from the LIDAR (Laser Scan). GMapping is a highly efficient Rao-Blackwellized particle filter to learn grid maps from laser range data and form a map showing  the obstacles around the robot. It uses the filtered odometry data to get the pose of the robot and merges the data with the laser scans received from the LIDAR to produce a map of the robot’s environment. The map of the environment, thus produced is used by our navigation and path planning module. </p>
+<p>The map outputs visualized in RViz:</p>
+<p>Outdoor Map<br><img src="/images/Map4.jpg" alt="map1"></p>
+<p>Indoor Map<br><img src="/images/Map5.jpg" alt="map2"></p>
+
 
             <!-- Tags -->
             

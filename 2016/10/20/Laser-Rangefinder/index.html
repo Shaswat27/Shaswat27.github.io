@@ -72,44 +72,40 @@
 <!-- Navigation -->
 <header>
     <div class="logo">
-        <a href="/">Shaswat Datta</a>
+        <a href="<%- config.root %>"><%- config.title || "" %></a>
     </div><!-- end logo -->
 
     <div id="menu_icon"></div>
     <nav>
         <ul>
-            
+            <% for (var i in theme.menu){ %>
             <li>
-                <a href="/">Home</a>
+                <a href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
             </li>
-            
-            <li>
-                <a href="/archives">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about">About</a>
-            </li>
-            
+            <% } %>
         </ul>
     </nav><!-- end navigation menu -->
 
     <div class="footer clearfix">
         <ul class="social clearfix">
-            
-            
-                <li><a href="https://www.facebook.com/shaswat27" class="fb" target="_blank" data-title="Facebook"></a></li>
-            
-            
-            
-                <li><a href="https://in.linkedin.com/in/shaswat-datta-86812075" class="google" target="_blank" data-title="LinkedIn"></a></li>
-            
-            
-                <li><a href="mailto:shaswat.datta@gmail.com" class="dribble" target="_blank" data-title="Email"></a></li>
-            
-            
-                <li><a href="https://www.github.com/shaswat27" class="rss" target="_blank" data-title="Github"></a></li>
-            
+            <% if (theme.twitter_url) { %>
+                <li><a href="<%- theme.twitter_url %>" class="twitter" target="_blank" data-title="Twitter"></a></li>
+            <% } %>
+            <% if (theme.facebook_url) { %>
+                <li><a href="<%- theme.facebook_url %>" class="fb" target="_blank" data-title="Facebook"></a></li>
+            <% } %>
+            <% if (theme.behance_url) { %>
+                <li><a href="<%- theme.behance_url %>" class="behance" target="_blank" data-title="Behance"></a></li>
+            <% } %>
+            <% if (theme.googleplus_url) { %>
+                <li><a href="<%- theme.googleplus_url %>" class="google" target="_blank" data-title="LinkedIn"></a></li>
+            <% } %>
+            <% if (theme.dribble_url) { %>
+                <li><a href="<%- theme.dribble_url %>" class="dribble" target="_blank" data-title="Dribble"></a></li>
+            <% } %>
+            <% if (theme.rss_url) { %>
+                <li><a href="<%- theme.rss_url %>" class="rss" target="_blank" data-title="Github"></a></li>
+            <% } %>
         </ul><!-- end social -->
 
         <div class="rights">
@@ -132,11 +128,11 @@
 
     <ul class="btn clearfix">
         
-        <li><a href="/2016/10/20/Localization-and-Mapping/" class="previous" data-title="Localization and Mapping"></a></li>
+        <li><a class="previous disabled"></a></li>
         
         <li><a href="/" class="grid" data-title="Portfolio"></a></li>
         
-        <li><a href="/2016/10/20/Lane-Detection/" class="next" data-title="Lane Navigation"></a></li>
+        <li><a href="/2016/10/20/Localization-and-Mapping/" class="next" data-title="Localization and ..."></a></li>
         
     </ul>
 
@@ -155,10 +151,10 @@
             <p>My friend <a href="http://sidj.in/" target="_blank" rel="external">Siddharth Jha</a> had thought of an idea to use a laser and a webcam to mimic a 2D LIDAR and had registered for IBM Day a while back. The date for the presentation was 24th September, two days after our mid-semester exams. He asked me for demonstrating the project with him and to help with the conversion of laser range data to a point cloud format compatible with ROS (robot operating system). The project seemed interesting and easily doable within 2 days, so I agreed. But the time-frame wasn’t quite as planned. The thing to note here is that both of us are lazy creatures with nothing but impending deadlines getting us off our backs. Not surprisingly, nothing was done on the 22nd.</p>
 <p>Siddharth already had the 3D printed mount for the laser and webcam ready. We had access to Technology Robotix Society’s (robotics club at IIT Kharagpur) newly acquired 3D printer due to Siddharth’s on-again-off-again relationship. On the evening of the 23rd when we realized we should indeed be doing something we went to the market and bought the necessary accessories - screws, tape etc., and set to work. The previous day, we had discussed the data format to be transmitted from the Rasberry PI - a NumPy array of distances at various angles. I had written the code to read this and convert into a Point Cloud format in ROS - exactly the same as those transmitted by LIDARS used with ROS today. Therefore, the output of our system could directly be used by other ROS nodes such as localization, mapping, path planning etc. </p>
 <p><img src="/images/Range2.jpg" alt="The hardware"></p>
-<p>After an all-nighter which included changing the entire image processing code and integrated the point cloud conversion into the pipeline, the hardware was ready. Now all that needed to be done was to obtain the parameters of the camera (radians per pixel) by applying linear regression to the data obtained from the camera - pixel offset vs actual distance of the object. Surpisingly, the data was fairly linear. With that done, we set about to actual testing (23rd September, 4:30 a.m.). The device worked better than both our expectations and that too in the first try!</p>
+<p>After an all-nighter which included changing the entire image processing code and integrated the point cloud conversion into the pipeline, the hardware was ready. Now all that needed to be done was to obtain the parameters of the camera (radians per pixel) by applying linear regression to the data obtained from the camera - pixel offset vs actual distance of the object. Surprisingly, the data was fairly linear. With that done, we set about to actual testing (23rd September, 4:30 a.m.). The device worked better than both our expectations and that too in the first try!</p>
 <div align="center" class="video-container"><iframe width="854" height="480" src="https://www.youtube.com/embed/3fIS-zStADU" frameborder="0" allowfullscreen></iframe></div>
 
-<p><strong>IBM Day</strong>: The guest lectures by IBM researchers and the professors from our institute were disappointing, potraying no zeal for their research. I hate to admit, but they swayed my mind away from ever going into research momentarily. Ours was the only undergraduate team in the competition, and there was a humongous difference between the amounts of efforts put in by us and the other teams (a nightout compared to months). However, the demonstration went quite well, and the judges were impressed by what we were trying to achieve and the very low cost of our product.<br>Though we were not able to come in the top three (others had put in a lot more effort than us), it was a good time spent to make the makeshift LIDAR and the <em>(free)</em> food was brilliant. </p>
+<p><strong>IBM Day</strong>: The guest lectures by IBM researchers and the professors from our institute were disappointing, portraying no zeal for their research. I hate to admit, but they swayed my mind away from ever going into research momentarily. Ours was the only undergraduate team in the competition, and there was a humongous difference between the amounts of efforts put in by us and the other teams (a nigh tout compared to months). However, the demonstration went quite well, and the judges were impressed by what we were trying to achieve and the very low cost of our product.<br>Though we were not able to come in the top three (others had put in a lot more effort than us), it was a good time spent to make the makeshift LIDAR and the <em>(free)</em> food was brilliant. </p>
 <p><img src="/images/Range3.jpg" alt="me"></p>
 <p>(A picture of me with the device, Siddharth is notoriously reluctant to get clicked) </p>
 
