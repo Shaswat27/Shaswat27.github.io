@@ -171,7 +171,7 @@
 <li>Use the same convolutional network as above, but replace the fully connected layers by deconvolutional layers as use in <a href="https://arxiv.org/pdf/1411.4038.pdf" target="_blank" rel="external">fully convolutional networks</a>. This is a <strong>semantic segmentation</strong> problem. I haven’t incorporated the <em>skip-layers</em> yet and the output, thus, was very coarse. </li>
 </ol>
 <p>The original image:<br><img src="/images/LaneDet3.jpg" alt="x"></p>
-<p>The ground truth:<br><img src="/images/LaneDet4.pgm" alt="y_true"></p>
+<p>The ground truth:<br><img src="/images/LaneDet4.jpg" alt="y_true"></p>
 <p>The output of regression network:<br><img src="/images/LaneDet2.jpg" alt="y_pred"> </p>
 <p>So far, these three approaches <strong>clearly</strong> haven’t been able to improve the existing methods I described above, but I am still working on these and will post updates soon (right now, I am busy with a project on depth-regression - more on that later). However, the interesting takeaway from these experiments is how a single problem, in this case -  lane detection, could be framed as a regression, classification, as well as a semantic segmentation problem!</p>
 
