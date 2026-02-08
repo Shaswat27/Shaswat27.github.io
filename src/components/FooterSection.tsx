@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const socials = [
-  { icon: Linkedin, href: "https://linkedin.com/in/shaswatdatta", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/shaswat-datta/", label: "LinkedIn" },
   { icon: Github, href: "https://github.com/Shaswat27", label: "GitHub" },
-  { icon: Twitter, href: "https://x.com/shaswatdatta", label: "X" },
+  { icon: Twitter, href: "https://x.com/_shaswat", label: "X" },
 ];
 
 const FooterSection = () => {
@@ -45,7 +45,7 @@ const FooterSection = () => {
           </div>
 
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Shaswat Datta. Built with Lovable.
+            © {new Date().getFullYear()} Shaswat Datta. Built with AI.
           </p>
         </motion.div>
       </div>
