@@ -32,13 +32,13 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Project Beta",
-    media: "./og-image.png",
-    tagline: "Consumer health product leveraging conversational AI for patient onboarding.",
+    title: "AI Product-Led Growth Engine",
+    media: "/PLG.png",
+    tagline: "An automated GTM funnel and digital landing page designed to scale GenAI adoption across the SMB \"long tail\".",
     bullets: [
-      "Designed multi-turn dialogue flows with Claude.",
-      "Integrated with EHR systems via FHIR APIs.",
-      "Achieved 85% completion rate in user testing.",
+      "Product Discovery: Synthesized pain points from deep-dive interviews with SMB leaders to adapt complex enterprise GenAI products into a friction-free, plug-and-play suite.",
+      "PLG Funnel: Built the conversion engine end-to-end, integrating auto qualification and lead-routing to replace high-touch sales with a scalable, low-cost motion.",
+      "Impact: Accelerated a new market vertical from $0 to $100K ARR in 10 weeks, doubling the baseline win-rate by automating the \"time-to-value\" journey for SMBs.",
     ],
   },
   {
