@@ -52,13 +52,13 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Project Delta",
-    media: "./og-image.png",
-    tagline: "Real-time analytics dashboard for monitoring ML model performance.",
+    title: "Vision and Sensor Systems for Autonomous Vehicles",
+    media: "/driverless.png",
+    tagline: "A full-stack perception engine for autonomous robots, integrating deep learning architectures with multi-sensor fusion for real-time mapping.",
     bullets: [
-      "Visualized drift detection and inference latency.",
-      "Enabled proactive model retraining alerts.",
-      "Deployed with Next.js and Recharts.",
+      "Problem: Robot navigation in unstructured environments requires intelligent perception and precise localization, often hindered by sensor noise and lighting conditions.",
+      "Intervention: Architected a multi-modal system with CNN-based object detection and an Extended Kalman Filter for real-time EGo-motion estimation and mapping.",
+      "Impact: Led the AI development for the Autonomous Ground Vehicle Team at IIT Kharagpur; research cited 100+ times in the robotics community.",
     ],
   },
 ];
