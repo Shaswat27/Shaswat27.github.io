@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { User } from "lucide-react";
 
 const techStack = [
-  "Python", "TypeScript", "OpenAI", "Claude", "SQL", "Supabase", "Figma", "Lovable", "Vercel"
+  "Python", "TypeScript", "OpenAI", "Claude", "Gemini", "Supabase", "Figma", "Lovable", "Vercel", "Node.js", "PostgreSQL", "Zapier" 
 ];
 
 const AboutSection = () => {
@@ -18,10 +18,10 @@ const AboutSection = () => {
         >
           {/* Headshot placeholder */}
           <div className="flex justify-center md:justify-start">
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl glass glow-border flex items-center justify-center overflow-hidden">
-              <User size={80} className="text-muted-foreground/40" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-              <span className="absolute bottom-4 text-xs text-muted-foreground font-mono">headshot.jpg</span>
+            <div className="relative w-full max-w-xl aspect-[4/3] rounded-xl glass glow-border overflow-hidden">
+              <img src="./headshot.JPEG" alt="Shaswat's Headshot" className="absolute inset-0 w-full h-full object-cover"/>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+              {/* <span className="absolute bottom-4 text-xs text-muted-foreground font-mono">headshot.jpg</span> */}
             </div>
           </div>
 
@@ -29,13 +29,16 @@ const AboutSection = () => {
           <div>
             <p className="text-sm font-mono text-primary tracking-widest uppercase mb-4">About</p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6 text-foreground">
-              Building at the intersection of AI & Product
+              Product, Pitch, and the Playbook
             </h2>
+            <p className="text-muted-foreground leading-relaxed mb-7">
+              Hi, I’m Shaswat! I’m a builder who loves untangling problems where technology meets the real world. My journey combines an Electronics and CS foundation from IIT Kharagpur with a strategic lens from my time in VC, Boston Consulting Group, and now at Harvard Business School.
+            </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              From engineering at IIT Kharagpur to venture capital at A91 Partners, my journey has been about understanding how technology creates value. At HBS, I'm deepening my lens on go-to-market strategy, product-led growth, and the emerging AI stack.
+              I’m most at home moving between worlds – building products like SignalLens in the morning and mapping frictionless user journeys for GenAI tools at Posh AI by the afternoon. I carry this builder’s lens into the boardroom. My time in VC was a masterclass in product strategy, partnering with CXOs to align technical roadmaps with growth.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              I vibe-code production-grade tools, advise early-stage startups on product strategy, and obsess over turning complex AI capabilities into intuitive user experiences.
+              When not in front of a screen, you’ll find me playing piano or hiking.
             </p>
           </div>
         </motion.div>

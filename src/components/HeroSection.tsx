@@ -26,7 +26,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <p className="text-sm font-mono text-primary tracking-widest uppercase mb-6">AI Product Strategist</p>
+          
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight mb-6 text-gradient">
             Shaswat Datta
           </h1>
@@ -48,7 +48,7 @@ const HeroSection = () => {
             View Projects <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
           </button>
           <a
-            href="#"
+            href="./Datta.Shaswat_CV.pdf"
             className="flex items-center gap-2 px-8 py-3 rounded-lg border border-border text-foreground font-medium text-sm hover:border-primary/50 hover:text-primary transition-all duration-300"
           >
             <Download size={16} /> Download Resume
