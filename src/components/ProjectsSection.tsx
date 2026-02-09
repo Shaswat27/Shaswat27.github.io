@@ -42,13 +42,13 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Project Gamma",
-    media: "./og-image.png",
-    tagline: "Internal knowledge management tool using RAG for enterprise documentation.",
+    title: "Digital Clinic-in-a-Box",
+    media: "/Telehealth.jpg",
+    tagline: "An end-to-end digital practice management suite designed to transition traditional healthcare providers into a digital-first ecosystem.",
     bullets: [
-      "Built semantic search over 50K+ internal docs.",
-      "Reduced employee onboarding time by 40%.",
-      "Integrated with Slack and Notion APIs.",
+      "Product Discovery: Segmented a fragmented provider market to define high-value user personas and feature requirements for a comprehensive 'clinic-in-a-box' SaaS platform.",
+      "Execution: Led cross-functional engineering and design squads to scope and ship a modular suite including digital EMR, telemedicine, and automated billing engines.",
+      "Impact: Architected the GTM strategy and provider onboarding flows to scale the platform from zero to 10k active medical professionals.",
     ],
   },
   {
