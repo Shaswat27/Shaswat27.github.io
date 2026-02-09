@@ -49,6 +49,7 @@ const HeroSection = () => {
           </button>
           <a
             href="./Datta.Shaswat_CV.pdf"
+            download="Datta.Shaswat_CV.pdf"
             className="flex items-center gap-2 px-8 py-3 rounded-lg border border-border text-foreground font-medium text-sm hover:border-primary/50 hover:text-primary transition-all duration-300"
           >
             <Download size={16} /> Download Resume
