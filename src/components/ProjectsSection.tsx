@@ -5,22 +5,25 @@ interface Project {
   title: string;
   tagline: string;
   bullets: string[];
+  media: string; // Path to your file in /public
   span?: string;
 }
 
 const projects: Project[] = [
   {
     title: "SignalLens",
-    tagline: "SaaS product review analyzer powered by LLMs for actionable competitive intelligence.",
+    tagline: "An AI-driven \"Voice of the Customer\" engine that synthesizes raw reviews into prioritized Product & GTM roadmaps.",
+    media: "/SignalLens_Upload.mp4",
     bullets: [
-      "Problem: Product teams drown in unstructured review data across platforms.",
-      "Intervention: Built an LLM pipeline to extract sentiment themes and feature gaps at scale.",
-      "Result: 10x faster competitive analysis with automated weekly insight reports.",
+      "Problem: Product teams face a massive \"signal-to-noise\" gap in unstructured feedback, rendering customer sentiment data un-actionable.",
+      "Intervention: Engineered a multi-stage pipeline using HDBSCAN clustering and LLM synthesis (Claude 3.5 & GPT-4o) to identify high-severity themes and feature gaps.",
+      "Impact: Transforms 100+ raw Trustpilot reviews into an actionable \"Impact vs. Effort\" matrix in seconds, automating the \"last mile\" of competitive intelligence.",
     ],
     span: "md:col-span-2",
   },
   {
     title: "Project Alpha",
+    media: "./og-image.png",
     tagline: "AI-powered workflow automation for early-stage VC deal sourcing.",
     bullets: [
       "Automated CRM enrichment using GPT-4 and web scraping.",
@@ -30,6 +33,7 @@ const projects: Project[] = [
   },
   {
     title: "Project Beta",
+    media: "./og-image.png",
     tagline: "Consumer health product leveraging conversational AI for patient onboarding.",
     bullets: [
       "Designed multi-turn dialogue flows with Claude.",
@@ -39,6 +43,7 @@ const projects: Project[] = [
   },
   {
     title: "Project Gamma",
+    media: "./og-image.png",
     tagline: "Internal knowledge management tool using RAG for enterprise documentation.",
     bullets: [
       "Built semantic search over 50K+ internal docs.",
@@ -48,6 +53,7 @@ const projects: Project[] = [
   },
   {
     title: "Project Delta",
+    media: "./og-image.png",
     tagline: "Real-time analytics dashboard for monitoring ML model performance.",
     bullets: [
       "Visualized drift detection and inference latency.",
@@ -84,38 +90,63 @@ const ProjectsSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.title}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={cardVariants}
-              className={`glass glow-border rounded-2xl overflow-hidden ${project.span || ""}`}
-            >
-              {/* Media placeholder */}
-              <div className="relative aspect-video bg-muted/30 flex items-center justify-center group cursor-pointer">
-                <div className="w-14 h-14 rounded-full glass flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Play size={20} className="text-primary ml-0.5" />
-                </div>
-                <span className="absolute bottom-3 right-3 text-xs font-mono text-muted-foreground">demo.mp4</span>
-              </div>
+          {projects.map((project, i) => {
+            const isVideo = project.media.endsWith(".mp4");
 
-              <div className="p-6 sm:p-8">
-                <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{project.tagline}</p>
-                <ul className="space-y-2">
-                  {project.bullets.map((b, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-secondary-foreground">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+            return (
+              <motion.div
+                key={project.title}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={cardVariants}
+                className={`glass glow-border rounded-2xl overflow-hidden flex flex-col ${project.span || ""}`}
+              >
+                {/* Updated Media Section */}
+                <div className="relative w-full h-[250px] sm:h-[400px] bg-black/20 overflow-hidden border-b border-white/5 flex items-center justify-center">
+                  {isVideo ? (
+                    <video
+                      autoPlay
+                      playsInline
+                      muted
+                      loop
+                      // Change to object-contain so the full dashboard is visible
+                      className="max-w-full max-h-full object-contain"
+                    >
+                      <source src={project.media} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <img 
+                      src={project.media} 
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                  
+                  {/* The "Video" badge stays anchored to the container */}
+                  <div className="absolute top-3 right-3 px-2 py-1 rounded bg-black/60 backdrop-blur-md border border-white/10 z-10">
+                    <span className="text-[10px] font-mono text-white/90 uppercase tracking-tighter">
+                      {isVideo ? "Video Demo" : "Project Image"}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 sm:p-8 flex-1">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">{project.tagline}</p>
+                  <ul className="space-y-2">
+                    {project.bullets.map((b, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm text-secondary-foreground">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
