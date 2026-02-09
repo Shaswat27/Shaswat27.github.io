@@ -4,7 +4,7 @@ import { Play } from "lucide-react";
 interface Project {
   title: string;
   tagline: string;
-  bullets: string[];
+  bullets: (string | React.ReactNode)[];
   media: string; // Path to your file in /public
   span?: string;
 }
@@ -15,9 +15,10 @@ const projects: Project[] = [
     tagline: "An AI-driven \"Voice of the Customer\" engine that synthesizes raw reviews into prioritized Product & GTM roadmaps.",
     media: "/SignalLens_Upload.mp4",
     bullets: [
-      "Problem: Product teams face a massive \"signal-to-noise\" gap in unstructured feedback, rendering customer sentiment data un-actionable.",
-      "Intervention: Engineered a multi-stage pipeline using HDBSCAN clustering and LLM synthesis (Claude 3.5 & GPT-4o) to identify high-severity themes and feature gaps.",
-      "Impact: Transforms 100+ raw Trustpilot reviews into an actionable \"Impact vs. Effort\" matrix in seconds, automating the \"last mile\" of competitive intelligence.",
+      <> <b>Problem:</b> Product teams face a massive "signal-to-noise" gap in unstructured feedback, rendering customer sentiment data unactionable.</>,
+      <> <b>Product Decision:</b> Prioritized pipeline determinism over LLM creativity by anchoring the system in clustering and low-temperature extraction.</>,
+      <> <b>Engineering:</b> Engineered a multi-stage pipeline using HDBSCAN clustering and LLM synthesis (Claude 3.5 & GPT-4o) to identify high-severity themes and feature gaps.</>,
+      <> <b>Impact:</b> Transforms 100+ raw Trustpilot reviews into an actionable "Impact vs. Effort" matrix in seconds, automating the "last mile" of competitive intelligence.</>,
     ],
     span: "md:col-span-2",
   },
@@ -26,9 +27,10 @@ const projects: Project[] = [
     media: "/TermsLens_Upload.mp4",
     tagline: "An AI-native financial analyst that translates complex venture capital term sheets into actionable, strategic dashboards.",
     bullets: [
-      "Problem: Founders face a high-stakes information asymmetry where dense legal prose (e.g., liquidation preferences) masks critical long-term dilution and governance risks.",
-      "Intervention: Built a stateless LLM pipeline (Claude 3.5 & GPT-4o) with rigid JSON schema enforcement and a back-end to ensure privacy-first, in-memory processing.",
-      "Impact: Converts static PDFs into dynamic Control & Governance and Cashflow visualizations in seconds, identifying critical triggers like anti-dilution and board shifts.",
+      <> <b>Problem:</b> Founders face a high-stakes information asymmetry where dense legal prose (e.g., liquidation preferences) masks critical long-term dilution and governance risks.</>,
+      <> <b>Product Decision:</b> Sacrificed user accounts and history in favor of a zero-retention, in-memory architecture; for founders, data privacy is a higher-value feature.</>,
+      <> <b>Engineering:</b> Built a stateless LLM pipeline (Claude 3.5 & GPT-4o) with rigid JSON schema enforcement and a back-end to ensure privacy-first, in-memory processing.</>,
+      <> <b>Impact:</b> Converts static PDFs into dynamic control & governance and cashflow visualizations in seconds, identifying critical triggers like anti-dilution and board shifts.</>,
     ],
   },
   {
@@ -36,9 +38,10 @@ const projects: Project[] = [
     media: "/PLG.png",
     tagline: "An automated GTM funnel and digital landing page designed to scale GenAI adoption across the SMB \"long tail\".",
     bullets: [
-      "Product Discovery: Synthesized pain points from deep-dive interviews with SMB leaders to adapt complex enterprise GenAI products into a friction-free, plug-and-play suite.",
-      "PLG Funnel: Built the conversion engine end-to-end, integrating auto qualification and lead-routing to replace high-touch sales with a scalable, low-cost motion.",
-      "Impact: Accelerated a new market vertical from $0 to $100K ARR in 10 weeks, doubling the baseline win-rate by automating the \"time-to-value\" journey for SMBs.",
+      <> <b>Product Discovery:</b> Synthesized pain points from deep-dive interviews with SMB ICPs to adapt complex enterprise GenAI products into a friction-free, plug-and-play suite.</>,
+      <> <b>PLG Funnel:</b> Built the conversion engine end-to-end, integrating auto qualification and lead-routing to replace high-touch sales with a scalable, low-cost motion.</>,
+      <> <b>Onboarding Strategy:</b> Designed a modular, 'template-first' user journey that reduced activation time and engineering overhead.</>,
+      <> <b>Impact:</b> Accelerated a new market vertical from $0 to $100K ARR in 10 weeks, doubling the baseline win-rate by automating the "time-to-value" journey for SMBs.</>,
     ],
   },
   {
@@ -46,9 +49,10 @@ const projects: Project[] = [
     media: "/Telehealth.jpg",
     tagline: "An end-to-end digital practice management suite designed to transition traditional healthcare providers into a digital-first ecosystem.",
     bullets: [
-      "Product Discovery: Segmented a fragmented provider market to define high-value user personas and feature requirements for a comprehensive 'clinic-in-a-box' SaaS platform.",
-      "Execution: Led cross-functional engineering and design squads to scope and ship a modular suite including digital EMR, telemedicine, and automated billing engines.",
-      "Impact: Architected the GTM strategy and provider onboarding flows to scale the platform from zero to 10k active medical professionals.",
+      <> <b>Product Discovery:</b> Segmented a fragmented provider market to define high-value user personas and feature requirements for a comprehensive 'clinic-in-a-box' SaaS platform.</>,
+      <> <b>Product Decision:</b> Prioritized Rx customization and consent management over clinical decision support; identified administrative flexibility as the primary adoption driver.</>,
+      <> <b>Engineering:</b> Led cross-functional engineering and design squads to scope and ship a modular suite including digital EMR, telemedicine, and automated billing engines.</>,
+      <> <b>Impact:</b> Architected the GTM strategy and provider onboarding flows to scale the platform from zero to 10k active medical professionals.</>,
     ],
   },
   {
@@ -56,9 +60,10 @@ const projects: Project[] = [
     media: "/driverless.png",
     tagline: "A full-stack perception engine for autonomous robots, integrating deep learning architectures with multi-sensor fusion for real-time mapping.",
     bullets: [
-      "Problem: Robot navigation in unstructured environments requires intelligent perception and precise localization, often hindered by sensor noise and lighting conditions.",
-      "Intervention: Architected a multi-modal system with CNN-based object detection and an Extended Kalman Filter for real-time EGo-motion estimation and mapping.",
-      "Impact: Led the AI development for the Autonomous Ground Vehicle Team at IIT Kharagpur; research cited 100+ times in the robotics community.",
+      <> <b>Problem:</b> Robot navigation in unstructured environments requires intelligent perception and precise localization, often hindered by sensor noise and lighting conditions.</>,
+      <> <b>Product Decision:</b> Prioritized deterministic state consistency over stochastic models; identified that for safety-critical robotics, explainability is more vital.</>,
+      <> <b>Engineering:</b> Architected a multi-modal system with CNN-based object detection and an Extended Kalman Filter for real-time ego-motion estimation and mapping.</>,
+      <> <b>Impact:</b> Led the AI development for the Autonomous Ground Vehicle Team at IIT Kharagpur; research cited 100+ times in the robotics community.</>,
     ],
   },
 ];
@@ -139,7 +144,9 @@ const ProjectsSection = () => {
                     {project.bullets.map((b, j) => (
                       <li key={j} className="flex items-start gap-2 text-sm text-secondary-foreground">
                         <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                        {b}
+                        <span className="leading-relaxed">
+                          {b}
+                        </span>
                       </li>
                     ))}
                   </ul>

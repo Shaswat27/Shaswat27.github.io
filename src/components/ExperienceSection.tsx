@@ -23,7 +23,7 @@ const experiences: Experience[] = [
     role: "Product Strategy",
     period: "2024",
     description:
-      "Led GTM strategy for enterprise conversational AI platform. Scaled new vertical from 0→1, driving $100k revenue in 10 weeks through product strategy and product-led GTM. Partnered with engineering and marketing to launch a genAI-based frontline training tool.",
+      "Led GTM strategy for enterprise conversational AI platform. Scaled new vertical from 0→1, driving $100k revenue in 10 weeks through product strategy and product-led GTM. Partnered with engineering and marketing to launch a GenAI-based frontline training tool.",
   },
   {
     company: "A91 Partners (VC)",
