@@ -91,7 +91,7 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         'marquee-slow': 'scroll 40s linear infinite',
-        'marquee-fast': 'scroll 10s linear infinite',
+        'marquee-fast': 'scroll 20s linear infinite',
       },
     },
   },
