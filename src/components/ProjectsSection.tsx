@@ -22,13 +22,13 @@ const projects: Project[] = [
     span: "md:col-span-2",
   },
   {
-    title: "Project Alpha",
-    media: "./og-image.png",
-    tagline: "AI-powered workflow automation for early-stage VC deal sourcing.",
+    title: "TermsLens",
+    media: "/TermsLens_Upload.mp4",
+    tagline: "An AI-native financial analyst that translates complex venture capital term sheets into actionable, strategic dashboards.",
     bullets: [
-      "Automated CRM enrichment using GPT-4 and web scraping.",
-      "Reduced analyst screening time by 60%.",
-      "Deployed on Vercel with Supabase backend.",
+      "Problem: Founders face a high-stakes information asymmetry where dense legal prose (e.g., liquidation preferences) masks critical long-term dilution and governance risks.",
+      "Intervention: Built a stateless LLM pipeline (Claude 3.5 & GPT-4o) with rigid JSON schema enforcement and a back-end to ensure privacy-first, in-memory processing.",
+      "Impact: Converts static PDFs into dynamic Control & Governance and Cashflow visualizations in seconds, identifying critical triggers like anti-dilution and board shifts.",
     ],
   },
   {
