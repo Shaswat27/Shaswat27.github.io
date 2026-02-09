@@ -79,7 +79,7 @@ const ProjectsSection = () => {
         >
           <p className="text-sm font-mono text-primary tracking-widest uppercase mb-4">Portfolio</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-            Vibe-Coded Projects
+            Scalable Product Solutions
           </h2>
         </motion.div>
 
