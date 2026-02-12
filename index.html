@@ -17,6 +17,21 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@_shaswat" />
     <meta name="twitter:image" content="https://Shaswat27.github.io/og-image.png" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_ID%"></script>
+    <script>
+      // This check ensures analytics only run when the ID is correctly injected
+      if ("%VITE_GA_ID%" && "%VITE_GA_ID%" !== "%" + "VITE_GA_ID" + "%") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '%VITE_GA_ID%', {
+          'anonymize_ip': true, // Good practice for privacy
+          'cookie_flags': 'SameSite=None;Secure'
+        });
+      }
+    </script>
   </head>
 
   <body>
